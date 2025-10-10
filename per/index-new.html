@@ -194,6 +194,7 @@ span.m {
     loadData();
     function loadMoreData() {
         limit +=50;
+        loadData($('#filterData').val().toLowerCase());
     }
 
 </script>
