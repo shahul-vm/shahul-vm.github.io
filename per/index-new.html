@@ -14,6 +14,7 @@
 var newHouseList = {};
      </script>
     <script>
+        let limit = 50;
         let systemLang = window.localStorage.getItem('lang') || '';
 let systemMode = window.localStorage.getItem('systemMode') || '';
  let name = 'name';
@@ -32,7 +33,7 @@ function loadData(filter='') {
         } else {
              $('#btn-ml').removeClass('btn-primary');
         }
-    if (systemMode) {
+    if (systemMode && false) {
         $('#btn-sys').addClass('btn-primary');
         let i = 0;
          for (let key in newHouseList) {
@@ -55,7 +56,7 @@ function loadData(filter='') {
     } else {
         $('#btn-sys').removeClass('btn-primary');
         const newList = votersList.filter(item => item.name.startsWith(filter) ||  item.fName.startsWith(filter)|| item.hName.startsWith(filter) );
-        newList.forEach((item, index) => {
+        newList.slice(0, limit).forEach((item, index) => {
             template += getItem(item);
         });
         $('.list-group').html(template);
@@ -84,6 +85,7 @@ function getItem(item) {
 }
 
 function filterData(t) {
+    limit = 50;
     loadData(t.value.toLowerCase());
 }
 
@@ -190,6 +192,10 @@ span.m {
 </div>
 <script>
     loadData();
+    function loadMoreData() {
+        limit +=50;
+    }
+
 </script>
 </body>
 </html>
