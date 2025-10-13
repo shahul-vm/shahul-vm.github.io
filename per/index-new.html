@@ -10568,20 +10568,6 @@
             "hName": "peedikakkudiyil"
         }, {
             "boothType": 2,
-            "no": "4",
-            "nameMl": "ബുഷറ കെ കെ",
-            "fNameMl": "അബു കെ എ",
-            "booth": "008",
-            "hNo": "17",
-            "hNameMl": "കൊച്ചങ്ങാടി പുത്തൻപുര",
-            "gender": "f",
-            "age": "48",
-            "idNo": "SEC051403997",
-            "name": "bushara k k",
-            "fName": "abu k a",
-            "hName": "kochangadiputhenpura"
-        }, {
-            "boothType": 2,
             "no": "5",
             "nameMl": "അഫ്ന അബു",
             "fNameMl": "അബു  കെ എ",
@@ -20902,8 +20888,22 @@
                 $('.list-group').html(template);
 
             } else {
+
                 $('#btn-sys').removeClass('btn-primary');
-                const newList = votersList.filter(item => item.name.startsWith(filter) || item.fName.startsWith(filter) || item.hName.startsWith(filter));
+                let newList;
+                    if (filter.startsWith('-')) {
+                        const frag =  filter.split('-');
+                        newList = votersList.slice(0)
+                        if (frag[1]) {
+                            newList = newList.filter(item => item.gender=== frag[1].toLowerCase())
+                        }
+                        if (frag[2]) {
+                             newList = newList.filter(item => Number(item.age) <= Number(frag[2]))
+                        }
+                    } else {
+                       newList = votersList.filter(item => item.name.startsWith(filter) || item.fName.startsWith(filter) || item.hName.startsWith(filter));
+                    }
+
                 newList.slice(0, limit).forEach((item, index) => {
                     template += getItem(item);
                 });
