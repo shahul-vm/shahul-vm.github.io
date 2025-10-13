@@ -74,7 +74,7 @@ function getItem(item) {
              <div class="content-wrap">
               <b>${item[name]} (${item.age})</b> ${item[hName]} / ${item[fName]}
               <br />
-              ${item.booth}/ ${item.hNo} / ${item.no}
+              Booth: <b>${item.boothType}</b>/House:  <b>${item.hNo}</b> /No: <b>${item.no}</b>
               <br />
               ${item.idNo}
 </div>
@@ -170,7 +170,7 @@ span.m {
 <div class="container">
   <div class="fixed">
       <div class="row">
-        <div class="col-xs-8"><h4><span id="voterCount"></span> Voters</h4></div>
+        <div class="col-xs-8"><h4><span id="voterCount"></span> </h4></div>
         <div class="col-xs-4">
             <button class="btn" id="btn-sys" type="button" onclick="changeMode()"><span class="glyphicon glyphicon-home" ></span></button>
             <button class="btn" id="btn-ml" onclick="changeLang()" type="button">Malayalam</button>
